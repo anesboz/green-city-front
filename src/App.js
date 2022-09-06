@@ -28,7 +28,7 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <BrowserRouter basename="/green-city">
+      <BrowserRouter basename="/green-city-front">
         <GContext.Provider
           value={{
             zonesDisplayHook: [zonesDisplay, setZonesDisplay],
