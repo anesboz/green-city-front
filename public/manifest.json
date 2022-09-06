@@ -1,0 +1,8 @@
+{
+  "short_name": "Green City",
+  "name": "climate change is real",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
