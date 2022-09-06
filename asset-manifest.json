@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/green-city-front/static/css/main.40d76ece.css",
-    "main.js": "/green-city-front/static/js/main.d0100f69.js",
+    "main.js": "/green-city-front/static/js/main.766a1ead.js",
     "static/media/ville_example.jpg": "/green-city-front/static/media/ville_example.8a67fb58b7c3c622bad7.jpg",
     "static/media/logo.jpg": "/green-city-front/static/media/logo.cfb97fc879bce40d8300.jpg",
     "static/media/u_paris.png": "/green-city-front/static/media/u_paris.8cb9585fc0a5f2b19e56.png",
     "index.html": "/green-city-front/index.html",
     "main.40d76ece.css.map": "/green-city-front/static/css/main.40d76ece.css.map",
-    "main.d0100f69.js.map": "/green-city-front/static/js/main.d0100f69.js.map"
+    "main.766a1ead.js.map": "/green-city-front/static/js/main.766a1ead.js.map"
   },
   "entrypoints": [
     "static/css/main.40d76ece.css",
-    "static/js/main.d0100f69.js"
+    "static/js/main.766a1ead.js"
   ]
 }
