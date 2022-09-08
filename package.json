@@ -4,22 +4,7 @@
   "description": "",
   "keywords": [],
   "main": "src/index.js",
-  "dependencies": {
-    "@emotion/react": "^11.10.4",
-    "@emotion/styled": "^11.10.4",
-    "@mui/icons-material": "^5.10.3",
-    "@mui/material": "^5.10.4",
-    "leaflet": "1.5.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-leaflet": "2.8.0",
-    "react-leaflet-heatmap-layer": "2.0.0",
-    "react-router-dom": "^6.3.0",
-    "react-scripts": "3.0.1"
-  },
-  "devDependencies": {
-    "typescript": "3.3.3"
-  },
+  "homepage": "http://anesboz.github.io/green-city-front",
   "scripts": {
     "dev": "react-scripts start",
     "start": "react-scripts start",
@@ -28,6 +13,25 @@
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/icons-material": "^5.10.3",
+    "@mui/material": "^5.10.4",
+    "axios": "^0.27.2",
+    "leaflet": "1.5.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-leaflet": "2.8.0",
+    "react-leaflet-heatmap-layer": "2.0.0",
+    "react-router-dom": "^6.3.0",
+    "react-scripts": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^8.23.0",
+    "eslint-plugin-react": "^7.31.7",
+    "gh-pages": "^4.0.0"
   },
   "browserslist": [
     ">0.2%",

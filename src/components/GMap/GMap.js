@@ -1,46 +1,76 @@
-import { Grid } from '@mui/material'
-import { GContext } from 'App'
-import React, { useContext, useState } from 'react'
-import {MapContainer, TileLayer } from 'react-leaflet'
-import Quadrillage from './Quadrillage/Quadrillage'
+import React, { useEffect, useState } from 'react'
+import { Map as LeafletMap, TileLayer } from 'react-leaflet'
+import GControl from './subcomponents/GControl'
+import GHeat from './subcomponents/GHeat'
+import { getTrees } from './utils/utils'
 
-const initMap = {
-  zoom: 12,
-  canter: [48.852174427333274, 2.299322310264648],
-}
+const villes = [
+  {
+    city: `paris`,
+    center: [48.85871234399918, 2.343226476017022],
+    perimetre: [
+      [48.90654329979615, 2.2228371180783846],
+      [48.91237534592436, 2.482768686355441],
+      [48.799797999768685, 2.4976653493326006],
+      [48.80243874446095, 2.1976039950758786],
+    ],
+    zoom: 12,
+  },
+]
 
-const initMap2 = {
-  zoom: 12,
-  canter: [12.9716, 77.5946],
-}
+export default function GMap() {
+  const [control, setControl] = useState({
+    heatHidden: false,
+    radius: 1,
+    blur: 2,
+    max: 0.1,
+  })
 
-export default function GMap(props) {
-  const [center, setCenter] = useState(initMap.center)
+  const sample = villes[0]
+  const [trees, setTrees] = useState(null)
+  const [loading, setLoading] = useState({
+    trees: true,
+    temperature: true,
+  })
 
-  const { zonesDisplayHook } = useContext(GContext)
-  const [zonesDisplay] = zonesDisplayHook
+  useEffect(() => {
+    fetchData(sample.perimetre)
+  }, [])
+
+  function fetchData(perimetre) {
+    setLoading({ trees: true, temperature: true })
+    getTrees(perimetre)
+      .then((res) => {
+        const trees = res.data.elements
+          // .slice(0, 100000)
+          .map(({ lat, lon }) => ({ lat, lon }))
+        setTrees(trees)
+      })
+      .catch((err) => {
+        console.log(`getTrees`)
+        console.log(err)
+      })
+      .finally(() => setLoading({ ...loading, trees: false }))
+  }
+
+  const empty = trees == null
 
   return (
-    <Grid container>
-      <MapContainer
-        center={center}
-        zoom={initMap.zoom}
-        style={{
-          minHeight: '90vh',
-          width: `100%`,
-          marginBottom: 0,
-        }}
-        scrollWheelZoom={true}
+    <div style={{ height: 500, width: `100vw` }}>
+      <GControl controlHook={[control, setControl]} />
+      <LeafletMap
+        center={sample.center}
+        zoom={sample.zoom}
+        // ondragend={(e) => {
+        //   console.log(e)
+        // }}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.osm.org/{z}/{x}/{y}.png"
         />
-        <Quadrillage
-          hide={zonesDisplay === false}
-          centerHook={[center, setCenter]}
-        />
-      </MapContainer>
-    </Grid>
+        <GHeat points={trees} control={control} />
+      </LeafletMap>
+    </div>
   )
 }

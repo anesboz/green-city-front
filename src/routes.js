@@ -7,8 +7,6 @@ import GrassIcon from '@mui/icons-material/Grass'
 import ContactSupportIcon from '@mui/icons-material/ContactSupport'
 import React from 'react'
 
-
-
 export const routes = [
   {
     name: `Home`,

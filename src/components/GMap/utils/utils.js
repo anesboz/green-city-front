@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export function getTrees(clockWiseCoord) {
-  const [north, east, south, west] = clockWiseCoord
+  const [north, east, south, west] = zoneToSquare(clockWiseCoord)
   const str = `[out:json][timeout:100];(node["natural"="tree"](${south},${west},${north},${east}););out body;>;out skel qt;`
   const url = encodeURIComponent(str)
     .replaceAll('(', '%28')
@@ -56,4 +56,3 @@ export function zoneCenter(arrayOfPoints) {
     (Math.max(...ys) + Math.min(...ys)) / 2,
   ]
 }
-
