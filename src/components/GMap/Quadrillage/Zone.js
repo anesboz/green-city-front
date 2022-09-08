@@ -1,7 +1,7 @@
 import { Button } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import { Popup, Rectangle, Tooltip } from 'react-leaflet'
-import { getTemparature, getTrees, zoneToSquare } from './utils/utils'
+import { getTemparature, getTrees, zoneToSquare } from '../utils/utils'
 
 export default function Zone(props) {
   const { bounds } = props
@@ -19,8 +19,6 @@ export default function Zone(props) {
 
   function fetchData() {
     setLoading({ trees: true, temperature: true })
-    // const arr = zoneToSquare(bounds)
-    // console.log(`🚩 . arr`, arr)
     const arr = [bounds[0][0], bounds[1][1], bounds[1][0], bounds[0][1]]
     getTrees(arr)
       .then((res) => {
@@ -40,7 +38,7 @@ export default function Zone(props) {
         const { temp } = temperatures.main
         const result = {
           ...temperatures.coord,
-          temp: Math.ceil(Math.round((temp - 273.15) * 100) / 100),
+          temp: Math.round((temp - 273) * 100) / 100,
         }
         setTemperature(result)
       })

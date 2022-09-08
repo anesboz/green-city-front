@@ -1,5 +1,4 @@
 import Drawer from '@mui/material/Drawer'
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar'
 import List from '@mui/material/List'
 import Divider from '@mui/material/Divider'
 import IconButton from '@mui/material/IconButton'
@@ -9,21 +8,19 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemIcon from '@mui/material/ListItemIcon'
 import ListItemText from '@mui/material/ListItemText'
-import InboxIcon from '@mui/icons-material/MoveToInbox'
-import MailIcon from '@mui/icons-material/Mail'
 import { styled } from '@mui/material/styles'
-import { FormControlLabel, FormGroup, Switch } from '@mui/material'
+import { Switch } from '@mui/material'
 import ArchitectureIcon from '@mui/icons-material/Architecture'
 import { useContext } from 'react'
 import { GContext } from 'App'
 import { routes } from 'routes'
 import { useNavigate } from 'react-router-dom'
+import React from 'react'
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
   ...theme.mixins.toolbar,
   justifyContent: 'flex-start',
 }))
@@ -43,7 +40,6 @@ export default function MyDrawer({
 
   return (
     <Drawer anchor={anchor} open={open} onClick={() => setOpen(false)}>
-      {/* {content} */}
       <DrawerHeader>
         <IconButton onClick={() => setOpen(false)}>
           {anchor === 'left' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
@@ -66,12 +62,6 @@ export default function MyDrawer({
           </ListItem>
         </List>
         <Divider />
-        {/* {routes.map(({ name, path }) => (
-          <Button key={name} sx={{ color: '#fff' }}>
-            {name}
-          </Button>
-        ))} */}
-
         <List>
           {routes.map(({ name, path, icon }, index) => (
             <ListItem

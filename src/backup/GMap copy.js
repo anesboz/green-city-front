@@ -1,21 +1,12 @@
 import { Grid } from '@mui/material'
 import { GContext } from 'App'
 import React, { useContext, useState } from 'react'
-import {MapContainer, TileLayer } from 'react-leaflet'
+import { MapContainer, TileLayer } from 'react-leaflet'
 import Quadrillage from './Quadrillage/Quadrillage'
 
-const initMap = {
-  zoom: 12,
-  canter: [48.852174427333274, 2.299322310264648],
-}
-
-const initMap2 = {
-  zoom: 12,
-  canter: [12.9716, 77.5946],
-}
-
 export default function GMap(props) {
-  const [center, setCenter] = useState(initMap.center)
+  const defaultCenter = [48.852174427333274, 2.299322310264648] // default par Paris
+  const [center, setCenter] = useState(defaultCenter)
 
   const { zonesDisplayHook } = useContext(GContext)
   const [zonesDisplay] = zonesDisplayHook
@@ -24,7 +15,7 @@ export default function GMap(props) {
     <Grid container>
       <MapContainer
         center={center}
-        zoom={initMap.zoom}
+        zoom={12}
         style={{
           minHeight: '90vh',
           width: `100%`,

@@ -48,14 +48,3 @@ code {
 .blue {
   border: 2px solid blue;
 }
-
-body {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-#root,
-.leaflet-container {
-  height: 100%;
-  width: 100%;
-}

@@ -17,6 +17,7 @@ import { useState } from 'react'
 import u_parisLogo from 'assets/images/u_paris.png'
 import ville_example from 'assets/images/ville_example.jpg'
 import logo from 'assets/images/logo.jpg'
+import React from 'react'
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
